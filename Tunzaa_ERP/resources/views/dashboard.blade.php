@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sales Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+@extends('layout')
+
+@section('content')
 
 <div class="container py-4">
     <h2 class="mb-4 text-center">Sales Dashboard</h2>
 
-    {{-- Quick Stats --}}
+   
     <div class="row mb-4">
         <div class="col-md-4">
             <div class="card text-white bg-success">
@@ -70,5 +65,4 @@
     </div>
 </div>
 
-</body>
-</html>
+@endsection

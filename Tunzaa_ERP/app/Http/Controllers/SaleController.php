@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sale;
+use App\Models\Product;
 use Carbon\Carbon;
 
 class SaleController extends Controller
 {
+
+    public function index(){
+        $sales = Sale::latest()->paginate(10); // paginate to make it easier to browse
+        return view('sale', compact('sales'));
+    }
     public function store(Request $request)
     {
         //validation of inputs
@@ -18,7 +24,8 @@ class SaleController extends Controller
         ]);
             //insertion of input in database after validation
         $sale = Sale::create([
-            'user_id' => auth()->id(),
+           'user_id' => session('user')->id,
+
             'product' => $validated['product'],
             'quantity' => $validated['quantity'],
             'amount' => $validated['amount'],

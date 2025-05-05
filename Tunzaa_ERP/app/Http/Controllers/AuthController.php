@@ -1,6 +1,6 @@
 <?php
 
-// app/Http/Controllers/AuthController.php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -23,10 +23,9 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
-
         if ($user && Hash::check($request->password, $user->password)) {
             session(['user' => $user]);
-            return redirect()->route('dashboard');
+            return redirect()->route('sales.dashboard');
         }
 
         return back()->withErrors(['invalid' => 'Invalid credentials']);
